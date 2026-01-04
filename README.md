@@ -9,13 +9,13 @@ It is recommended to use docker image according to the slime documentation. The 
 ### Pull and Start Docker Container
 
 ```bash
-# Create and activate a new conda environment
-conda create -n sparse-rl python=3.10 -y
-conda activate sparse-rl
+# Pull the latest image
+docker pull slimerl/slime:nightly-dev-20251117b
 
-# Install PyTorch (Adjust the CUDA version command according to your system)
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-
+# Start the container
+docker run --rm --gpus all --ipc=host --shm-size=16g \
+  --ulimit memlock=-1 --ulimit stack=67108864 \
+  -it slimerl/slime:latest /bin/bash
 ```
 
 ### Install SGLang-KVC
@@ -55,7 +55,7 @@ The training dataset for Qwen models is stored in `dataset/simplelr_qwen_level3t
 
 
 ## Training
-
+We conduct the GRPO training of Qwen2.5-1.5B/3B/7B and llama3.2-1B-Instruct on 4x H20-141G GPUs.
 
 ### Model Weight Conversion
 We use Megatron as the training backend. Referring to the official Slime documentation, we need to convert Hugging Face format model weights to Megatron torch_dist format.
