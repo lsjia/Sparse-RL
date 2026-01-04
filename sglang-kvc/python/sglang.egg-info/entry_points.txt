@@ -1,0 +1,2 @@
+[console_scripts]
+sglang = sglang.cli.main:main
