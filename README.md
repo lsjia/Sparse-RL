@@ -94,7 +94,7 @@ Noted that if KV compression is used, the `--sglang-disable-cuda-graph` argument
 
 ## Evaluation
 
-## Model Weight Conversion
+### Model Weight Conversion
 Use the following script to convert the saved Megatron checkpoints back to Hugging Face format:
 ```bash
 cd slime
